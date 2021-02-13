@@ -1,0 +1,37 @@
+<div class="centrar">
+    <button mat-fab color="white" mat-raised-button (click)="fileInput.click()"
+        aria-label="Example icon button with a delete icon">
+        <mat-icon>add_a_photo</mat-icon>
+    </button>
+    <input hidden type="file" (change)="onFileSelected($event)" #fileInput type="file" id="file">
+</div>
+<div class="centrar">
+<img [src]="sourceFile" id="imgImagen" style="margin: 0px auto; width: 200px;"/>
+</div>
+<!-- Highlight Card -->
+<div class="card highlight-card card-small">
+    <div class="centrar">
+        <section>
+            <label *ngIf="!namefile" for="#fileInput">Selecione una imagen</label>
+            <label *ngIf="namefile" for="#fileInput">{{ namefile }}</label>
+        </section>
+    </div>
+</div>
+
+<div class="centrar">
+    <button mat-raised-button color="white" (click)="createJob()"><mat-icon aria-hidden="false">send</mat-icon></button>
+</div>
+<mat-card>
+	<mat-card-header style="text-align:center;display:inline;">
+		<mat-card-title>{{ title }}</mat-card-title>
+	</mat-card-header>
+	<mat-card-content style="text-align:center;display:inline;">
+		<h3>{{ response.documentType }}</h3>
+		<h3>{{ response.confidence }}</h3>
+		<h3>{{ response.OCRConfidence }}</h3>
+		<h3>{{ response.blurValue }}</h3>
+		<h3>{{ response.qualityNote }}</h3>
+		<h3>{{ response.message }}</h3>
+		<table id="tblResultado" border="1" style="margin: 0px auto;"></table>
+	</mat-card-content>
+</mat-card>
